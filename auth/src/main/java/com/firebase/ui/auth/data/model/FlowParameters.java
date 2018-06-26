@@ -14,7 +14,6 @@
 package com.firebase.ui.auth.data.model;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.DrawableRes;
@@ -22,6 +21,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.StyleRes;
+import android.text.TextUtils;
 
 import com.firebase.ui.auth.AuthUI.IdpConfig;
 import com.firebase.ui.auth.util.ExtraConstants;
@@ -54,8 +54,6 @@ public class FlowParameters implements Parcelable {
     @Nullable
     public final String privacyPolicyUrl;
 
-    public final boolean allowNewEmailAccounts;
-
     public final boolean enableCredentials;
     public final boolean enableHints;
 
@@ -67,8 +65,7 @@ public class FlowParameters implements Parcelable {
             @Nullable String termsOfServiceUrl,
             @Nullable String privacyPolicyUrl,
             boolean enableCredentials,
-            boolean enableHints,
-            boolean allowNewEmailAccounts) {
+            boolean enableHints) {
         this.appName = Preconditions.checkNotNull(appName, "appName cannot be null");
         this.providerInfo = Collections.unmodifiableList(
                 Preconditions.checkNotNull(providerInfo, "providerInfo cannot be null"));
@@ -78,31 +75,13 @@ public class FlowParameters implements Parcelable {
         this.privacyPolicyUrl = privacyPolicyUrl;
         this.enableCredentials = enableCredentials;
         this.enableHints = enableHints;
-        this.allowNewEmailAccounts = allowNewEmailAccounts;
     }
 
     /**
      * Extract FlowParameters from an Intent.
      */
     public static FlowParameters fromIntent(Intent intent) {
-        return intent.getParcelableExtra(ExtraConstants.EXTRA_FLOW_PARAMS);
-    }
-
-    /**
-     * Extract FlowParameters from a Bundle.
-     */
-    public static FlowParameters fromBundle(Bundle bundle) {
-        return bundle.getParcelable(ExtraConstants.EXTRA_FLOW_PARAMS);
-    }
-
-    /**
-     * Create a bundle containing this FlowParameters object as {@link
-     * ExtraConstants#EXTRA_FLOW_PARAMS}.
-     */
-    public Bundle toBundle() {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(ExtraConstants.EXTRA_FLOW_PARAMS, this);
-        return bundle;
+        return intent.getParcelableExtra(ExtraConstants.FLOW_PARAMS);
     }
 
     @Override
@@ -115,7 +94,6 @@ public class FlowParameters implements Parcelable {
         dest.writeString(privacyPolicyUrl);
         dest.writeInt(enableCredentials ? 1 : 0);
         dest.writeInt(enableHints ? 1 : 0);
-        dest.writeInt(allowNewEmailAccounts ? 1 : 0);
     }
 
     @Override
@@ -134,7 +112,6 @@ public class FlowParameters implements Parcelable {
             String privacyPolicyUrl = in.readString();
             boolean enableCredentials = in.readInt() != 0;
             boolean enableHints = in.readInt() != 0;
-            boolean allowNewEmailAccounts = in.readInt() != 0;
 
             return new FlowParameters(
                     appName,
@@ -144,8 +121,7 @@ public class FlowParameters implements Parcelable {
                     termsOfServiceUrl,
                     privacyPolicyUrl,
                     enableCredentials,
-                    enableHints,
-                    allowNewEmailAccounts);
+                    enableHints);
         }
 
         @Override
@@ -153,4 +129,16 @@ public class FlowParameters implements Parcelable {
             return new FlowParameters[size];
         }
     };
+
+    public boolean isSingleProviderFlow() {
+        return providerInfo.size() == 1;
+    }
+
+    public boolean isTermsOfServiceUrlProvided() {
+        return !TextUtils.isEmpty(termsOfServiceUrl);
+    }
+
+    public boolean isPrivacyPolicyUrlProvided() {
+        return !TextUtils.isEmpty(privacyPolicyUrl);
+    }
 }

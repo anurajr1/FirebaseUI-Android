@@ -5,14 +5,17 @@
     <string name="fui_default_toolbar_title" translatable="false">@string/app_name</string>
     <string name="fui_progress_dialog_loading" translation_description="Loading text in dialog">Loading…</string>
     <string name="fui_sign_in_default" translation_description="Button text to sign in">Sign in</string>
-    <string name="fui_general_error" translation_description="Toast text flashing general error">An error has occurred.</string>
+    <string name="fui_tos_and_pp" translation_description="Global ToS and privacy policy message">By continuing, you are indicating that you accept our <xliff:g example="https://google.com/terms" id="tos" translation_description="Terms of service text">%1$s</xliff:g> and <xliff:g example="https://google.com/privacy" id="pp" translation_description="Privacy policy text">%2$s</xliff:g>.</string>
+    <string name="fui_tos_only" translation_description="Global ToS and privacy policy message">By continuing, you are indicating that you accept our <xliff:g example="https://google.com/terms" id="tos" translation_description="Terms of service text">%1$s</xliff:g>.</string>
+    <string name="fui_pp_only" translation_description="Global ToS and privacy policy message">By continuing, you are indicating that you accept our <xliff:g example="https://google.com/privacy" id="pp" translation_description="Privacy policy text">%1$s</xliff:g>.</string>
+    <string name="fui_tos_and_pp_footer" translation_description="Global ToS and Privacy policy footer"><xliff:g example="https://google.com/terms" id="tos" translation_description="Footer ToS text">%1$s</xliff:g> \u00A0 \u00A0 <xliff:g example="https://google.com/privacy" id="pp" translation_description="Footer privacy policy text">%2$s</xliff:g></string>
+    <string name="fui_tos_footer" translation_description="Global ToS footer"><xliff:g example="https://google.com/terms" id="tos" translation_description="Footer ToS only text">%1$s</xliff:g> </string>
+    <string name="fui_pp_footer" translation_description="Global privacy policy footer"><xliff:g example="https://google.com/privacy" id="pp" translation_description="Footer privacy policy only text">%1$s</xliff:g></string>
 
     <!-- Provider -->
     <string name="fui_idp_name_google">Google</string>
     <string name="fui_idp_name_facebook">Facebook</string>
     <string name="fui_idp_name_twitter">Twitter</string>
-    <string name="fui_provider_name_email">Email</string>
-    <string name="fui_provider_name_phone">Phone</string>
 
     <!-- Auth method picker -->
     <string name="fui_sign_in_with_google" translation_description="Sign in button text">Sign in with Google</string>
@@ -41,12 +44,9 @@
         <item quantity="other" translation_description="Inline error for weak password">Password not strong enough. Use at least %1$d characters and a mix of letters and numbers</item>
     </plurals>
     <string name="fui_email_account_creation_error" translation_description="Inline error for signup failure">Email account registration unsuccessful</string>
-    <string name="fui_error_user_collision" translation_description="Inline error when user signs up using an existing email account">An account already exists with that email address.</string>
-    <string name="fui_create_account_preamble_tos_and_pp" translation_description="Text shown when creating an account with both terms of service and privacy policy.">By tapping <xliff:g example="SAVE" id="btn" translation_description="">%1$s</xliff:g> you are indicating that you agree to the <xliff:g example="https://google.com/terms" id="tos" translation_description="">%2$s</xliff:g> and the <xliff:g example="https://google.com/privacy" id="pp" translation_description="">%3$s</xliff:g>.</string>
-    <string name="fui_create_account_preamble_tos_only" translation_description="Text shown when creating an account with only terms of service">By tapping <xliff:g example="SAVE" id="btn" translation_description="">%1$s</xliff:g> you are indicating that you agree to the <xliff:g example="https://google.com/terms" id="tos" translation_description="">%2$s</xliff:g>.</string>
-    <string name="fui_create_account_preamble_pp_only" translation_description="Text shown when creating an account with only privacy policy">By tapping <xliff:g example="SAVE" id="btn" translation_description="">%1$s</xliff:g> you are indicating that you agree to the <xliff:g example="https://google.com/privacy" id="pp" translation_description="">%2$s</xliff:g>.</string>
     <string name="fui_terms_of_service" translation_description="Link text to web url containing the app's terms of service">Terms of Service</string>
     <string name="fui_privacy_policy" translation_description="Link text to web url containing the app's privacy policy">Privacy Policy</string>
+    <string name="fui_email_field_name" translatable="false">email_field</string>
 
     <!-- Idp/Email welcome back -->
     <string name="fui_title_welcome_back_idp_prompt" translatable="false">@string/fui_sign_in_default</string>
@@ -74,11 +74,14 @@
     <string name="fui_progress_dialog_sending" translation_description="Progress dialog while password recovery email is being sent">Sending…</string>
     <string name="fui_error_email_does_not_exist" translation_description="Inline error when user attempt signin with invalid account">That email address doesn\'t match an existing account</string>
 
-    <!-- accessibility -->
-    <string name="fui_accessibility_logo" translation_description="Content description for app logo">App logo</string>
-    <string name="fui_signed_in_with_specific_account" translation_description="Post signin message showing method of authentication">Signed in as <xliff:g example="jane.doe@example.com" id="email_addr" translation_description="">%1$s</xliff:g></string>
+    <!-- Other error messages -->
+    <string name="fui_error_unknown" translation_description="General error messages for an unknown failure.">An unknown error occurred.</string>
+    <string name="fui_error_invalid_password" translation_description="Error message for when the user enters an invalid or wrong password.">Incorrect password.</string>
 
-    <!-- phone number auth -->
+    <!-- Accessibility -->
+    <string name="fui_accessibility_logo" translation_description="Content description for app logo">App logo</string>
+
+    <!-- Phone number auth -->
     <string name="fui_verify_phone_number_title" translation_description="Phone number entry form title">Enter your phone number</string>
     <string name="fui_invalid_phone_number" translation_description="Inline error when phone number entered is invalid">Enter a valid phone number</string>
     <string name="fui_enter_confirmation_code" translation_description="Phone number verification code entry form title">Enter the 6-digit code we sent to</string>
@@ -100,4 +103,7 @@
     <string name="fui_verify_phone_number" translation_description="Button text to submit confirmation code and complete phone verification">Verify Phone Number</string>
     <string name="fui_continue_phone_login" translation_description="Button text to submit phone number and send sms">Continue</string>
     <string name="fui_sms_terms_of_service" translation_description="Fine print warning displayed below Verify Phone Number button">By tapping “%1$s”, an SMS may be sent. Message &amp; data rates may apply.</string>
+    <string name="fui_sms_terms_of_service_and_privacy_policy_extended" translation_description="Fine print warning displayed below Verify Phone Number button">By tapping “%1$s”, you are indicating that you accept our <xliff:g example="https://google.com/terms" id="tos" translation_description="">%2$s</xliff:g> and <xliff:g example="https://google.com/privacy" id="pp" translation_description="">%3$s</xliff:g>. An SMS may be sent. Message &amp; data rates may apply.</string>
+    <string name="fui_sms_terms_of_service_only_extended" translation_description="Fine print warning displayed below Verify Phone Number button">By tapping “%1$s”, you are indicating that you accept our <xliff:g example="https://google.com/terms" id="tos" translation_description="">%2$s</xliff:g>. An SMS may be sent. Message &amp; data rates may apply.</string>
+    <string name="fui_sms_privacy_policy_only_extended" translation_description="Fine print warning displayed below Verify Phone Number button">By tapping “%1$s”, you are indicating that you accept our <xliff:g example="https://google.com/privacy" id="pp" translation_description="">%2$s</xliff:g>. An SMS may be sent. Message &amp; data rates may apply.</string>
 </resources>

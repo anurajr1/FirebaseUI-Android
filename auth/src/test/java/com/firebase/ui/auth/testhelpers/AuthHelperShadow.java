@@ -1,9 +1,6 @@
 package com.firebase.ui.auth.testhelpers;
 
-import com.firebase.ui.auth.ui.HelperActivityBase;
 import com.firebase.ui.auth.util.AuthHelper;
-import com.firebase.ui.auth.util.signincontainer.SaveSmartLock;
-import com.google.android.gms.auth.api.credentials.CredentialsApi;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -19,8 +16,6 @@ public class AuthHelperShadow {
 
     private static FirebaseAuth sFirebaseAuth;
     private static FirebaseUser sFirebaseUser;
-    private static CredentialsApi sCredentialsApi;
-    private static SaveSmartLock sSaveSmartLock;
     private static PhoneAuthProvider sPhoneAuthProvider;
 
     public AuthHelperShadow() {}
@@ -36,30 +31,12 @@ public class AuthHelperShadow {
     }
 
     @Implementation
-    public static CredentialsApi getCredentialsApi() {
-        if (sCredentialsApi == null) {
-            sCredentialsApi = Mockito.mock(CredentialsApi.class);
-        }
-
-        return sCredentialsApi;
-    }
-
-    @Implementation
     public static FirebaseUser getCurrentUser() {
         if (sFirebaseUser == null) {
             sFirebaseUser = TestHelper.getMockFirebaseUser();
         }
 
         return sFirebaseUser;
-    }
-
-    @Implementation
-    public static SaveSmartLock getSaveSmartLockInstance(HelperActivityBase activity) {
-        if (sSaveSmartLock == null) {
-            sSaveSmartLock = Mockito.mock(SaveSmartLock.class);
-        }
-
-        return sSaveSmartLock;
     }
 
     @Implementation

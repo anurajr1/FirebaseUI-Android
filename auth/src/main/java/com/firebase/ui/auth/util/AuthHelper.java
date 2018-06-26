@@ -4,10 +4,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 
 import com.firebase.ui.auth.data.model.FlowParameters;
-import com.firebase.ui.auth.ui.HelperActivityBase;
-import com.firebase.ui.auth.util.signincontainer.SaveSmartLock;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.credentials.CredentialsApi;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,17 +25,9 @@ public class AuthHelper {
         return FirebaseAuth.getInstance(FirebaseApp.getInstance(mFlowParams.appName));
     }
 
-    public CredentialsApi getCredentialsApi() {
-        return Auth.CredentialsApi;
-    }
-
     @Nullable
     public FirebaseUser getCurrentUser() {
         return getFirebaseAuth().getCurrentUser();
-    }
-
-    public SaveSmartLock getSaveSmartLockInstance(HelperActivityBase activity) {
-        return SaveSmartLock.getInstance(activity);
     }
 
     public PhoneAuthProvider getPhoneAuthProvider() {
